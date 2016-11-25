@@ -1,0 +1,24 @@
+{
+	"app_name": "EasyFinance",
+	"local_app_folder": "/Users/elondon/Documents/EasyFinance",
+	"remote_app_folder": "/home/deploy/easyfinance-api",
+	"remote_server": "192.34.62.104",
+	"remote_deploy_user": "elondon",
+	"app_requirements": [{
+		"name": "flask",
+		"config": "config"
+	}, {
+		"name": "postgres",
+		"config": "config"
+	}, {
+		"name": "nginx",
+		"local_config_folder": "/Users/elondon/Documents/EasyFinance/nginx_config",
+		"remote_config_folder": "/etc/nginx/sites-enabled",
+		"local_sslcert_folder": "/Users/myUser/Documents/EasyFinance/ssl_certs",
+		"remote_supervisor_folder": "/etc/supervisor/conf.d"
+	}, {
+		"name": "supervisor",
+		"local_config_folder": "/Users/elondon/Documents/EasyFinance/supervisor_config",
+		"remote_config_folder": "/etc/supervisor/conf.d"
+	}]
+}
