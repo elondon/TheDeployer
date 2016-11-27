@@ -36,7 +36,7 @@ class Postgres(Dependency):
         self.create_db = config['create_db']
 
     def install(self):
-        sudo('apt-get install postgresql postgresql-contrib')
+        sudo('apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev')
 
     def configure(self):
         if not pg_user_exists(self.db_user):

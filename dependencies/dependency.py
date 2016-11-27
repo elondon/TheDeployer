@@ -1,7 +1,5 @@
 from abc import ABCMeta, abstractmethod
 
-from click._unicodefun import click
-
 
 class Dependency:
     def __init__(self, dep_config):

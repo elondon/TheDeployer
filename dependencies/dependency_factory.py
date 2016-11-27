@@ -1,3 +1,4 @@
+from dependencies.flask_app import FlaskApp
 from dependencies.nginx import Nginx
 from dependencies.postgres import Postgres
 from dependencies.supervisor import Supervisor
@@ -6,9 +7,11 @@ from dependencies.supervisor import Supervisor
 
 
 def get_dependency(dep):
-    if dep['name'] == 'Nginx':
+    if dep['name'].upper() == 'FLASKAPP':
+        return FlaskApp(dep)
+    if dep['name'].upper() == 'NGINX':
         return Nginx(dep)
-    if dep['name'] == 'Postgres':
+    if dep['name'].upper() == 'POSTGRES':
         return Postgres(dep)
-    if dep['name'] == 'Supervisor':
+    if dep['name'].upper() == 'SUPERVISOR':
         return Supervisor(dep)

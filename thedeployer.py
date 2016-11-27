@@ -10,6 +10,7 @@ from fabric.api import env
 
 from dependencies.dependency_factory import get_dependency
 from dependencies.nginx import Nginx
+from fabric.operations import sudo
 
 error_color = 'red'
 info_color = 'green'
@@ -83,6 +84,8 @@ def install_dependencies(config, app):
     # sudo('apt-get -y update')
     # sudo('apt-get upgrade')
     for dep in config['app_requirements']:
+        if dep['name'] != 'Supervisor':
+            continue
         dep_class = get_dependency(dep)
         install_dependency(dep_class)
         configure_dependency(dep_class)
@@ -97,3 +100,17 @@ def install_dependency(dependency):
 def configure_dependency(dependency):
     click.echo(click.style('Configuring %s.' % dependency.dependency_name, fg=info_color))
     dependency.configure()
+
+
+# just for fabric experiments.
+@cli.command()
+@click.argument('app')
+@pass_config
+def scratch_pad(config, app):
+    config = get_config_for_app(config, app)
+    if config is None:
+        return
+    res = sudo('id -u testSystemUser')
+    click.echo(res)
+    res = sudo('id -u testSystemUser2')
+    click.echo(res)
