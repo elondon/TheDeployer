@@ -1,6 +1,7 @@
 from dependencies.flask_app import FlaskApp
 from dependencies.nginx import Nginx
 from dependencies.postgres import Postgres
+from dependencies.react_app import ReactApp
 from dependencies.supervisor import Supervisor
 
 # todo change this to dynamic instantiation?
@@ -15,3 +16,5 @@ def get_dependency(dep):
         return Postgres(dep)
     if dep['name'].upper() == 'SUPERVISOR':
         return Supervisor(dep)
+    if dep['name'].upper() == "REACTAPP":
+        return ReactApp(dep)

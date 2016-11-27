@@ -84,8 +84,8 @@ def install_dependencies(config, app):
     # sudo('apt-get -y update')
     # sudo('apt-get upgrade')
     for dep in config['app_requirements']:
-        if dep['name'] != 'Supervisor':
-            continue
+       # if dep['name'] != 'Supervisor':
+       #     continue
         dep_class = get_dependency(dep)
         install_dependency(dep_class)
         configure_dependency(dep_class)
